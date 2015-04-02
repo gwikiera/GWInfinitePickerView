@@ -51,6 +51,14 @@ static NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 @implementation GWInfinitePickerView
 
+- (void)didMoveToWindow
+{
+    [super didMoveToWindow];
+    for (int i = 0; i < [self numberOfComponents]; i++) {
+        [self selectRow:0 inComponent:i animated:NO];
+    }
+}
+
 - (NSInteger)normalizedRowForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSInteger numberOfRowsInComponent = [self numberOfRowsInComponent:component];
