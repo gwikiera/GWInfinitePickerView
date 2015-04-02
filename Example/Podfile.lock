@@ -1,0 +1,14 @@
+PODS:
+  - GWInfinitePickerView (0.1.0)
+
+DEPENDENCIES:
+  - GWInfinitePickerView (from `../`)
+
+EXTERNAL SOURCES:
+  GWInfinitePickerView:
+    :path: ../
+
+SPEC CHECKSUMS:
+  GWInfinitePickerView: 78be0574b2d5c2d1c3403f8e34fbf66b9d3f1a34
+
+COCOAPODS: 0.35.0
