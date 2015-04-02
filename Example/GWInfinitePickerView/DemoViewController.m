@@ -28,11 +28,21 @@
 @interface DemoViewController ()
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
-@property (weak, nonatomic) IBOutlet GWInfinitePickerView *pickerView;
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+@property (strong, nonatomic) IBOutletCollection(UIPickerView) NSArray *pickerViews;
+@property (nonatomic, readonly) UIPickerView *pickerView;
 
 @end
 
 @implementation DemoViewController
+
+- (IBAction)segmentedContolValueChanged:(UISegmentedControl *)sender
+{
+    for (UIPickerView * pickerView in self.pickerViews) {
+        pickerView.hidden = pickerView.tag != sender.selectedSegmentIndex;
+    }
+    [self updateTimeLabelText];
+}
 
 #pragma mark - IBActions
 
@@ -41,12 +51,16 @@
     [self resetPickerToCurrentTime];
 }
 
-#pragma mark - Overriden
+#pragma mark - Private Properties
 
-- (void)viewDidAppear:(BOOL)animated
+- (UIPickerView *)pickerView
 {
-    [super viewDidAppear:animated];
-    [self resetPickerToCurrentTime];
+    for (UIPickerView * pickerView in self.pickerViews) {
+        if (pickerView.tag == self.segmentedControl.selectedSegmentIndex) {
+            return pickerView;
+        }
+    }
+    return nil;
 }
 
 #pragma mark - Private Methods
@@ -73,9 +87,8 @@
 {
     if (!view) {
         view = [[UILabel alloc] init];
-        
     }
-   [(UILabel *)view setText: [NSString stringWithFormat:@"%02ld", (long)row]];
+    [(UILabel *)view setText: [NSString stringWithFormat:@"%02ld", (long)row]];
     return view;
 }
 
