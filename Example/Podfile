@@ -1,0 +1,11 @@
+source 'https://github.com/CocoaPods/Specs.git'
+
+target 'GWInfinitePickerView', :exclusive => true do
+  pod "GWInfinitePickerView", :path => "../"
+end
+
+target 'GWInfinitePickerViewTests', :exclusive => true do
+  pod "GWInfinitePickerView", :path => "../"
+
+  
+end
