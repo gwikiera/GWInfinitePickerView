@@ -62,6 +62,10 @@ static NSInteger const kInfinitivePickerViewRowOffset = 1000;
 - (NSInteger)normalizedRowForRow:(NSInteger)row forComponent:(NSInteger)component
 {
     NSInteger numberOfRowsInComponent = [self numberOfRowsInComponent:component];
+    if (numberOfRowsInComponent <= 0) {
+        return row;
+    }
+    
     NSInteger normalizedRow = (row - kInfinitivePickerViewRowOffset) % numberOfRowsInComponent;
     if (normalizedRow < 0) {
         normalizedRow += numberOfRowsInComponent;
@@ -149,7 +153,11 @@ static NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return kInfinitivePickerViewRowOffset * 2 + [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
+    NSInteger numberOfRowsInComponent = [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
+    if (numberOfRowsInComponent <= 0) {
+        return numberOfRowsInComponent;
+    }
+    return kInfinitivePickerViewRowOffset * 2 + numberOfRowsInComponent;
 }
 
 @end
