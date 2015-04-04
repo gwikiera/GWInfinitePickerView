@@ -23,6 +23,7 @@
 
 
 #import "GWInfinitePickerView.h"
+#import <objc/runtime.h>
 
 
 static NSInteger const kInfinitivePickerViewRowOffset = 1000;
@@ -165,11 +166,36 @@ static NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 @implementation PickerViewDelegateSurrogate
 
+- (void)normalizeInvocation:(NSInvocation *)anInvocation
+{
+    __unsafe_unretained GWInfinitePickerView * pickerView = nil;
+    [anInvocation getArgument:&pickerView atIndex:2];
+    NSInteger row;
+    [anInvocation getArgument:&row atIndex:3];
+    NSInteger component;
+    [anInvocation getArgument:&component atIndex:4];
+    NSInteger normalizedRow = [pickerView normalizedRowForRow:row forComponent:component];
+    [anInvocation setArgument:&normalizedRow atIndex:3];
+}
+
 #pragma mark - Overriden
 
 - (void)forwardInvocation:(NSInvocation *)anInvocation
 {
     if ([self.pickerViewDelegate respondsToSelector:anInvocation.selector]) {
+        if (sel_isEqual(anInvocation.selector, @selector(pickerView:titleForRow:forComponent:))) {
+            [self normalizeInvocation:anInvocation];
+        }
+        if (sel_isEqual(anInvocation.selector, @selector(pickerView:attributedTitleForRow:forComponent:))) {
+            [self normalizeInvocation:anInvocation];
+        }
+        if (sel_isEqual(anInvocation.selector, @selector(pickerView:viewForRow:forComponent:reusingView:))) {
+            [self normalizeInvocation:anInvocation];
+        }
+        if (sel_isEqual(anInvocation.selector, @selector(pickerView:didSelectRow:inComponent:))) {
+            [self normalizeInvocation:anInvocation];
+        }
+        
         [anInvocation invokeWithTarget:self.pickerViewDelegate];
         return;
     }
@@ -192,27 +218,6 @@ static NSInteger const kInfinitivePickerViewRowOffset = 1000;
         signature = [(NSObject *)self.pickerViewDelegate methodSignatureForSelector:selector];
     }
     return signature;
-}
-
-#pragma mark - UIPickerViewDelegate
-
-- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.pickerViewDelegate pickerView:pickerView titleForRow:[(GWInfinitePickerView *)pickerView normalizedRowForRow:row forComponent:component] forComponent:component];
-}
-
-- (NSAttributedString *)pickerView:(UIPickerView *)pickerView attributedTitleForRow:(NSInteger)row forComponent:(NSInteger)component {
-    return [self.pickerViewDelegate pickerView:pickerView attributedTitleForRow:[(GWInfinitePickerView *)pickerView normalizedRowForRow:row forComponent:component] forComponent:component];
-}
-
-- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
-{
-    return [self.pickerViewDelegate pickerView:pickerView viewForRow:[(GWInfinitePickerView *)pickerView normalizedRowForRow:row forComponent:component]  forComponent:component reusingView:view];
-}
-
-- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
-{
-    [self.pickerViewDelegate pickerView:pickerView didSelectRow:row inComponent:component];
-    [pickerView selectRow:row inComponent:component animated:NO];
 }
 
 @end
