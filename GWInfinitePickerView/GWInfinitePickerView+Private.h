@@ -1,6 +1,6 @@
 /*
- * Created by Grzegorz Wikiera on 30/03/15.
- * Copyright (c) 2015 Grzegorz Wikiera.
+ * Created by Grzegorz Wikiera on 31/01/18.
+ * Copyright (c) 2018 Grzegorz Wikiera.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -21,8 +21,10 @@
  * THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+extern NSInteger const kInfinitivePickerViewRowOffset;
 
-@interface DemoViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface GWInfinitePickerView : UIPickerView
+
+- (NSInteger)normalizedRowForRow:(NSInteger)row forComponent:(NSInteger)component;
 
 @end

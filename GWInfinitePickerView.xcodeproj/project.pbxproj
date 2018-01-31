@@ -8,9 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		2D93AEA020225E2300E7A41E /* GWInfinitePickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D93AE9620225E2300E7A41E /* GWInfinitePickerView.framework */; };
-		2D93AEA520225E2300E7A41E /* GWInfinitePickerViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEA420225E2300E7A41E /* GWInfinitePickerViewTests.m */; };
 		2D93AEBA20225FA000E7A41E /* GWInfinitePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEB820225FA000E7A41E /* GWInfinitePickerView.m */; };
 		2D93AEBB20225FA000E7A41E /* GWInfinitePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D93AEB920225FA000E7A41E /* GWInfinitePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		2D93AEEC2022656900E7A41E /* PickerViewDataSourceSurrogate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D93AEEA2022656900E7A41E /* PickerViewDataSourceSurrogate.h */; };
+		2D93AEED2022656900E7A41E /* PickerViewDataSourceSurrogate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEEB2022656900E7A41E /* PickerViewDataSourceSurrogate.m */; };
+		2D93AEF02022672500E7A41E /* PickerViewDelegateSurrogate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D93AEEE2022672500E7A41E /* PickerViewDelegateSurrogate.h */; };
+		2D93AEF12022672500E7A41E /* PickerViewDelegateSurrogate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEEF2022672500E7A41E /* PickerViewDelegateSurrogate.m */; };
+		2D93AEF52022699600E7A41E /* GWInfinitePickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEF42022699600E7A41E /* GWInfinitePickerViewTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,10 +31,16 @@
 		2D93AE9620225E2300E7A41E /* GWInfinitePickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GWInfinitePickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D93AE9A20225E2300E7A41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D93AE9F20225E2300E7A41E /* GWInfinitePickerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GWInfinitePickerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D93AEA420225E2300E7A41E /* GWInfinitePickerViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GWInfinitePickerViewTests.m; sourceTree = "<group>"; };
 		2D93AEA620225E2300E7A41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D93AEB820225FA000E7A41E /* GWInfinitePickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GWInfinitePickerView.m; sourceTree = "<group>"; };
 		2D93AEB920225FA000E7A41E /* GWInfinitePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GWInfinitePickerView.h; sourceTree = "<group>"; };
+		2D93AEEA2022656900E7A41E /* PickerViewDataSourceSurrogate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewDataSourceSurrogate.h; sourceTree = "<group>"; };
+		2D93AEEB2022656900E7A41E /* PickerViewDataSourceSurrogate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewDataSourceSurrogate.m; sourceTree = "<group>"; };
+		2D93AEEE2022672500E7A41E /* PickerViewDelegateSurrogate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PickerViewDelegateSurrogate.h; sourceTree = "<group>"; };
+		2D93AEEF2022672500E7A41E /* PickerViewDelegateSurrogate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PickerViewDelegateSurrogate.m; sourceTree = "<group>"; };
+		2D93AEF2202267A600E7A41E /* GWInfinitePickerView+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GWInfinitePickerView+Private.h"; sourceTree = "<group>"; };
+		2D93AEF32022699500E7A41E /* GWInfinitePickerViewTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GWInfinitePickerViewTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		2D93AEF42022699600E7A41E /* GWInfinitePickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GWInfinitePickerViewTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,7 +84,12 @@
 			isa = PBXGroup;
 			children = (
 				2D93AEB920225FA000E7A41E /* GWInfinitePickerView.h */,
+				2D93AEF2202267A600E7A41E /* GWInfinitePickerView+Private.h */,
 				2D93AEB820225FA000E7A41E /* GWInfinitePickerView.m */,
+				2D93AEEA2022656900E7A41E /* PickerViewDataSourceSurrogate.h */,
+				2D93AEEB2022656900E7A41E /* PickerViewDataSourceSurrogate.m */,
+				2D93AEEE2022672500E7A41E /* PickerViewDelegateSurrogate.h */,
+				2D93AEEF2022672500E7A41E /* PickerViewDelegateSurrogate.m */,
 				2D93AE9A20225E2300E7A41E /* Info.plist */,
 			);
 			path = GWInfinitePickerView;
@@ -83,7 +98,8 @@
 		2D93AEA320225E2300E7A41E /* GWInfinitePickerViewTests */ = {
 			isa = PBXGroup;
 			children = (
-				2D93AEA420225E2300E7A41E /* GWInfinitePickerViewTests.m */,
+				2D93AEF42022699600E7A41E /* GWInfinitePickerViewTests.swift */,
+				2D93AEF32022699500E7A41E /* GWInfinitePickerViewTests-Bridging-Header.h */,
 				2D93AEA620225E2300E7A41E /* Info.plist */,
 			);
 			path = GWInfinitePickerViewTests;
@@ -97,6 +113,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D93AEBB20225FA000E7A41E /* GWInfinitePickerView.h in Headers */,
+				2D93AEEC2022656900E7A41E /* PickerViewDataSourceSurrogate.h in Headers */,
+				2D93AEF02022672500E7A41E /* PickerViewDelegateSurrogate.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +172,7 @@
 					};
 					2D93AE9E20225E2300E7A41E = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -198,7 +217,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D93AEED2022656900E7A41E /* PickerViewDataSourceSurrogate.m in Sources */,
 				2D93AEBA20225FA000E7A41E /* GWInfinitePickerView.m in Sources */,
+				2D93AEF12022672500E7A41E /* PickerViewDelegateSurrogate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,7 +227,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D93AEA520225E2300E7A41E /* GWInfinitePickerViewTests.m in Sources */,
+				2D93AEF52022699600E7A41E /* GWInfinitePickerViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,11 +395,15 @@
 		2D93AEAE20225E2300E7A41E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GWInfinitePickerViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gwikiera.GWInfinitePickerViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GWInfinitePickerViewTests/GWInfinitePickerViewTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -386,11 +411,14 @@
 		2D93AEAF20225E2300E7A41E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = GWInfinitePickerViewTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.gwikiera.GWInfinitePickerViewTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "GWInfinitePickerViewTests/GWInfinitePickerViewTests-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

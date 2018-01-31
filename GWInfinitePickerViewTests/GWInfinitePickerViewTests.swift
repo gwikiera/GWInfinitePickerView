@@ -21,8 +21,39 @@
  * THE SOFTWARE.
  */
 
-#import <UIKit/UIKit.h>
+import XCTest
 
-@interface DemoViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+class GWInfinitePickerViewTests: XCTestCase {
+    var tested: GWInfinitePickerView!
+    override func setUp() {
+        super.setUp()
+        
+        tested = GWInfinitePickerView()
+    }
+    
+    override func tearDown() {
+        super.tearDown()
+        
+        tested = nil
+    }
+    
+    func testDataSource() {
+        let dataSource = PickerViewDataSource()
+        tested.dataSource = dataSource
+        
+        XCTAssertEqual(tested.numberOfComponents, dataSource.numberOfComponents(in: tested))
+        for i in 0..<tested.numberOfComponents {
+            XCTAssertEqual(tested.numberOfRows(inComponent: i), dataSource.pickerView(tested, numberOfRowsInComponent: i))
+        }
+    }
+}
 
-@end
+class PickerViewDataSource: NSObject, UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 2
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return (component + 1) * 10
+    }
+}
