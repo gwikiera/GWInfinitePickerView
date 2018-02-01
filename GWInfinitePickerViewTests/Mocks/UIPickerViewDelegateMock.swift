@@ -1,5 +1,5 @@
 /*
- * Created by Grzegorz Wikiera on 31/01/18.
+ * Created by Grzegorz Wikiera on 1/02/18.
  * Copyright (c) 2018 Grzegorz Wikiera.
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -21,23 +21,20 @@
  * THE SOFTWARE.
  */
 
+import UIKit
 
-#import "PickerViewDataSourceSurrogate.h"
-#import "GWInfinitePickerView+Private.h"
+class UIPickerViewDelegateMock: NSObject {
+    var widthForComponent: (Int) -> CGFloat = { _ in return 0 }
+    var viewForRow: (Int, Int) -> UIView = { _ in return UIView() }
 
-@implementation PickerViewDataSourceSurrogate
-
-#pragma mark - UIPickerViewDataSource
-
-- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
-{
-    return [self.pickerViewDataSource numberOfComponentsInPickerView:pickerView];
 }
 
-- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-{
-    NSInteger numberOfRowsInComponent = [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
-    return kInfinitivePickerViewRowOffset * 2 + numberOfRowsInComponent;
+extension UIPickerViewDelegateMock: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
+        return widthForComponent(component)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        return viewForRow(row, component)
+    }
 }
-
-@end

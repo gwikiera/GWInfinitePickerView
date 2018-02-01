@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2D3FB6F42023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3FB6F32023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift */; };
+		2D3FB6F62023B56C0092D9E7 /* UIPickerViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3FB6F52023B56C0092D9E7 /* UIPickerViewDelegateMock.swift */; };
 		2D93AEA020225E2300E7A41E /* GWInfinitePickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D93AE9620225E2300E7A41E /* GWInfinitePickerView.framework */; };
 		2D93AEBA20225FA000E7A41E /* GWInfinitePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEB820225FA000E7A41E /* GWInfinitePickerView.m */; };
 		2D93AEBB20225FA000E7A41E /* GWInfinitePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D93AEB920225FA000E7A41E /* GWInfinitePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -28,6 +30,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2D3FB6F32023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewDataSourceMock.swift; sourceTree = "<group>"; };
+		2D3FB6F52023B56C0092D9E7 /* UIPickerViewDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewDelegateMock.swift; sourceTree = "<group>"; };
 		2D93AE9620225E2300E7A41E /* GWInfinitePickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GWInfinitePickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D93AE9A20225E2300E7A41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D93AE9F20225E2300E7A41E /* GWInfinitePickerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GWInfinitePickerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2D3FB6F22023B4780092D9E7 /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				2D3FB6F32023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift */,
+				2D3FB6F52023B56C0092D9E7 /* UIPickerViewDelegateMock.swift */,
+			);
+			path = Mocks;
+			sourceTree = "<group>";
+		};
 		2D93AE8C20225E2200E7A41E = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +111,7 @@
 		2D93AEA320225E2300E7A41E /* GWInfinitePickerViewTests */ = {
 			isa = PBXGroup;
 			children = (
+				2D3FB6F22023B4780092D9E7 /* Mocks */,
 				2D93AEF42022699600E7A41E /* GWInfinitePickerViewTests.swift */,
 				2D93AEF32022699500E7A41E /* GWInfinitePickerViewTests-Bridging-Header.h */,
 				2D93AEA620225E2300E7A41E /* Info.plist */,
@@ -227,6 +241,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D3FB6F42023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift in Sources */,
+				2D3FB6F62023B56C0092D9E7 /* UIPickerViewDelegateMock.swift in Sources */,
 				2D93AEF52022699600E7A41E /* GWInfinitePickerViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

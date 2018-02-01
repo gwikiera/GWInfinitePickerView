@@ -40,7 +40,8 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
 {
     [super didMoveToWindow];
     for (int i = 0; i < [self numberOfComponents]; i++) {
-        [self selectRow:0 inComponent:i animated:NO];
+        NSInteger selectedRow = [self selectedRowInComponent:i];
+        [self selectRow:selectedRow inComponent:i animated:NO];
     }
 }
 

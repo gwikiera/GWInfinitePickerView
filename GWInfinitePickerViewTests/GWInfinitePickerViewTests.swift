@@ -22,38 +22,81 @@
  */
 
 import XCTest
+@testable import GWInfinitePickerView
 
 class GWInfinitePickerViewTests: XCTestCase {
     var tested: GWInfinitePickerView!
+    let numberOfComponents = 4
+    lazy var numberOfRows: [Int] = (0..<self.numberOfComponents).map { return $0 * 10 }
+    lazy var dataSourceMock: UIPickerViewDataSourceMock! = {
+        let dataSourceMock = UIPickerViewDataSourceMock()
+        dataSourceMock.numberOfComponents = self.numberOfComponents
+        dataSourceMock.numberOfRowsInComponent = { return self.numberOfRows[$0] }
+        return dataSourceMock
+    }()
+    
+    lazy var delegateMock: UIPickerViewDelegateMock! = UIPickerViewDelegateMock()
+    
     override func setUp() {
         super.setUp()
         
         tested = GWInfinitePickerView()
+        tested.dataSource = dataSourceMock
+        tested.delegate = delegateMock
     }
     
     override func tearDown() {
         super.tearDown()
         
-        tested = nil
+        dataSourceMock = nil
+        delegateMock = nil
     }
     
-    func testDataSource() {
-        let dataSource = PickerViewDataSource()
-        tested.dataSource = dataSource
+    func testDidMoveToWindow() {
+        tested.selectRow(1, inComponent: 1, animated: false)
+        let selectedRow = tested.selectedRow(inComponent: 1)
+        XCTAssertEqual(selectedRow, 1)
         
-        XCTAssertEqual(tested.numberOfComponents, dataSource.numberOfComponents(in: tested))
-        for i in 0..<tested.numberOfComponents {
-            XCTAssertEqual(tested.numberOfRows(inComponent: i), dataSource.pickerView(tested, numberOfRowsInComponent: i))
-        }
+        tested.didMoveToWindow()
+        XCTAssertEqual(selectedRow, tested.selectedRow(inComponent: 1))
     }
 }
 
-class PickerViewDataSource: NSObject, UIPickerViewDataSource {
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 2
+// MARK: DataSource
+extension GWInfinitePickerViewTests {
+    func testDataSourceNumberOfComponents() {
+        dataSourceMock.numberOfComponents = 4
+        
+        XCTAssertEqual(tested.numberOfComponents, 4)
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return (component + 1) * 10
+    func testDataSourceNumberOfRows() {
+        let pickerViewNumberOfRows = (0..<numberOfComponents).map(tested.numberOfRows)
+        
+        XCTAssertEqual(pickerViewNumberOfRows, numberOfRows)
     }
 }
+
+// MARK: Delegate
+extension GWInfinitePickerViewTests {
+    func testDelegateWidthForComponent() {
+        let widthForComponent: [CGFloat] = (0..<numberOfComponents).map { return CGFloat($0 * 10) }
+        delegateMock.widthForComponent = { return widthForComponent[$0] }
+        
+        let pickerViewWidthForComponent = (0..<numberOfComponents).map(tested.rowSize).map { $0.width }
+        
+        XCTAssertEqual(pickerViewWidthForComponent, widthForComponent)
+    }
+    
+    func testDelegateViewForRow() {
+        delegateMock.viewForRow = { (row, component) in
+            let view = UIView()
+            view.tag = component * 100 + row
+            return view
+        }
+        
+        XCTAssertEqual(tested.view(forRow: 1, forComponent: 0)?.tag, 1)
+        XCTAssertEqual(tested.view(forRow: 1, forComponent: 1)?.tag, 101)
+    }
+}
+
