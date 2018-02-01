@@ -1,0 +1,4 @@
+language: objective-c
+script: 
+  - xcodebuild clean build -project GWInfinitePickerView.xcodeproj -scheme GWInfinitePickerView
+  - xcodebuild test -project GWInfinitePickerView.xcodeproj -scheme GWInfinitePickerView -destination "name=iPhone 6 Plus"
