@@ -48,7 +48,7 @@ pod "GWInfinitePickerView"
 To integrate `GWInfinitePickerView` into your Xcode project using [Carthage](https://github.com/Carthage/Carthage), specify it in your `Cartfile`:
 
 ```ogdl
-github "gwikiera/GWInfinitePickerView" ~> 0.3.0
+github "gwikiera/GWInfinitePickerView" ~> 1.0.0
 ```
 
 ## Author
