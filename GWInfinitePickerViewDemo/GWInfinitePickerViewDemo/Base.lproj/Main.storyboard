@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="h7a-CD-uvb">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Detail-->
+        <scene sceneID="yUG-lL-AsK">
+            <objects>
+                <viewController title="Detail" id="JEX-9P-axG" customClass="DemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SYR-Wa-9uf"/>
+                        <viewControllerLayoutGuide type="bottom" id="GAO-Cl-Wes"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="svH-Pt-448">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView hidden="YES" tag="1" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S0F-pu-ba5">
+                                <rect key="frame" x="20" y="225.5" width="335" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JEX-9P-axG" id="lNk-a2-5md"/>
+                                    <outlet property="delegate" destination="JEX-9P-axG" id="xj9-Rh-CMM"/>
+                                </connections>
+                            </pickerView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0JD-5G-Hyy" customClass="GWInfinitePickerView">
+                                <rect key="frame" x="20" y="225.5" width="335" height="216"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="JEX-9P-axG" id="rL7-g3-5T8"/>
+                                    <outlet property="delegate" destination="JEX-9P-axG" id="k3M-Nr-kiq"/>
+                                </connections>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Selected time:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yfv-uc-QIp">
+                                <rect key="frame" x="132.5" y="84" width="110" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ib9-Tp-EyF">
+                                <rect key="frame" x="161.5" y="125" width="52" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ViH-8I-Gdl">
+                                <rect key="frame" x="66" y="461.5" width="243" height="30"/>
+                                <state key="normal" title="Reset the picker to the current time">
+                                    <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetButtonTapped:" destination="JEX-9P-axG" eventType="touchUpInside" id="P0A-te-maW"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="lGy-3x-Bgn">
+                                <rect key="frame" x="20" y="177.5" width="335" height="29"/>
+                                <segments>
+                                    <segment title="GWInfinitePickerView"/>
+                                    <segment title="UIPickerView"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedContolValueChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="nLa-CI-8DM"/>
+                                </connections>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="ib9-Tp-EyF" secondAttribute="centerX" id="3N9-LP-WFB"/>
+                            <constraint firstItem="0JD-5G-Hyy" firstAttribute="width" secondItem="lGy-3x-Bgn" secondAttribute="width" id="AA8-HR-5pp"/>
+                            <constraint firstAttribute="centerX" secondItem="Yfv-uc-QIp" secondAttribute="centerX" id="MCT-IV-yLz"/>
+                            <constraint firstAttribute="centerX" secondItem="ViH-8I-Gdl" secondAttribute="centerX" id="MTD-y0-UdT"/>
+                            <constraint firstAttribute="centerY" secondItem="S0F-pu-ba5" secondAttribute="centerY" id="Pes-k5-VNm"/>
+                            <constraint firstItem="ib9-Tp-EyF" firstAttribute="top" secondItem="Yfv-uc-QIp" secondAttribute="bottom" constant="20" id="afH-xD-sGD"/>
+                            <constraint firstItem="S0F-pu-ba5" firstAttribute="width" secondItem="0JD-5G-Hyy" secondAttribute="width" id="emN-UX-OVc"/>
+                            <constraint firstItem="ViH-8I-Gdl" firstAttribute="top" secondItem="S0F-pu-ba5" secondAttribute="bottom" constant="20" id="fPG-sm-cNL"/>
+                            <constraint firstItem="0JD-5G-Hyy" firstAttribute="top" secondItem="lGy-3x-Bgn" secondAttribute="bottom" constant="20" id="fZV-KM-TcL"/>
+                            <constraint firstAttribute="width" secondItem="0JD-5G-Hyy" secondAttribute="width" constant="40" id="kGP-Io-67O"/>
+                            <constraint firstItem="S0F-pu-ba5" firstAttribute="centerX" secondItem="0JD-5G-Hyy" secondAttribute="centerX" id="lqj-3B-fl7"/>
+                            <constraint firstAttribute="centerX" secondItem="S0F-pu-ba5" secondAttribute="centerX" id="ntC-74-c4A"/>
+                            <constraint firstItem="S0F-pu-ba5" firstAttribute="height" secondItem="0JD-5G-Hyy" secondAttribute="height" id="pxj-Hd-2Wl"/>
+                            <constraint firstItem="Yfv-uc-QIp" firstAttribute="top" secondItem="SYR-Wa-9uf" secondAttribute="bottom" constant="20" id="unr-Ja-Feq"/>
+                            <constraint firstItem="S0F-pu-ba5" firstAttribute="centerY" secondItem="0JD-5G-Hyy" secondAttribute="centerY" id="vlt-3y-iAM"/>
+                            <constraint firstItem="0JD-5G-Hyy" firstAttribute="centerX" secondItem="lGy-3x-Bgn" secondAttribute="centerX" id="ywq-t5-6f7"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="GWInfinitePickerViewDemo" id="mOI-FS-AaM"/>
+                    <connections>
+                        <outlet property="segmentedControl" destination="lGy-3x-Bgn" id="C4T-0i-N3v"/>
+                        <outlet property="timeLabel" destination="ib9-Tp-EyF" id="pRj-aP-Mwl"/>
+                        <outletCollection property="pickerViews" destination="0JD-5G-Hyy" id="xcl-Vj-UjR"/>
+                        <outletCollection property="pickerViews" destination="S0F-pu-ba5" id="hrK-K6-PyT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FJe-Yq-33r" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="429" y="130"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="0j0-ES-g4y">
+            <objects>
+                <navigationController id="h7a-CD-uvb" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Srn-d8-62i">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="JEX-9P-axG" kind="relationship" relationship="rootViewController" id="oeu-jO-IVx"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zV7-bI-B5X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-312" y="131"/>
+        </scene>
+    </scenes>
+</document>
