@@ -46,6 +46,6 @@ FOUNDATION_EXPORT const unsigned char GWInfinitePickerViewVersionString[];
  @param component A zero-indexed number identifying a component of the picker view.
  @return true if infinite scroll is enable, otherwise false.
  */
-- (BOOL)isInfiniteScrollEnableInComponent:(NSInteger)component;
+- (BOOL)isInfiniteScrollEnabledInComponent:(NSInteger)component;
 
 @end

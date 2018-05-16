@@ -104,8 +104,8 @@ extension GWInfinitePickerViewTests {
             return component == 0
         }
 
-        XCTAssertEqual(tested.isInfiniteScrollEnable(inComponent: 0), true)
-        XCTAssertEqual(tested.isInfiniteScrollEnable(inComponent: 11), false)
+        XCTAssertEqual(tested.isInfiniteScrollEnabled(inComponent: 0), true)
+        XCTAssertEqual(tested.isInfiniteScrollEnabled(inComponent: 11), false)
     }
 }
 

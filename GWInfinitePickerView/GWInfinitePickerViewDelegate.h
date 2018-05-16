@@ -23,6 +23,6 @@
  @param component A zero-indexed number identifying a component of pickerView. Components are numbered left-to-right.
  @return true to enable the infinite scroll feature, otherwise false.
  */
-- (BOOL)pickerView:(GWInfinitePickerView *)pickerView isInfiniteScrollEnableInComponent:(NSInteger)component;
+- (BOOL)pickerView:(GWInfinitePickerView *)pickerView isInfiniteScrollEnabledInComponent:(NSInteger)component;
 
 @end

@@ -23,7 +23,7 @@
 
 #import "GWInfinitePickerView.h"
 
-extern NSInteger const kInfinitivePickerViewRowOffset;
+extern NSInteger const kInfinitePickerViewRowOffset;
 
 @interface GWInfinitePickerView()
 

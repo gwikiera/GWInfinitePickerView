@@ -25,7 +25,7 @@
 #import "PickerViewDataSourceSurrogate.h"
 #import "PickerViewDelegateSurrogate.h"
 
-NSInteger const kInfinitivePickerViewRowOffset = 1000;
+NSInteger const kInfinitePickerViewRowOffset = 1000;
 
 @interface GWInfinitePickerView()
 
@@ -52,7 +52,7 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
         return row;
     }
     
-    NSInteger normalizedRow = (row - kInfinitivePickerViewRowOffset) % numberOfRowsInComponent;
+    NSInteger normalizedRow = (row - kInfinitePickerViewRowOffset) % numberOfRowsInComponent;
     if (normalizedRow < 0) {
         normalizedRow += numberOfRowsInComponent;
     }
@@ -61,8 +61,8 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 - (NSInteger)numberOfRowsInComponent:(NSInteger)component
 {
-    if([self isInfiniteScrollEnableInComponent:component]) {
-        return [super numberOfRowsInComponent:component] - 2 * kInfinitivePickerViewRowOffset;
+    if([self isInfiniteScrollEnabledInComponent:component]) {
+        return [super numberOfRowsInComponent:component] - 2 * kInfinitePickerViewRowOffset;
     }
 
     return [super numberOfRowsInComponent:component];
@@ -70,7 +70,7 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 - (UIView *)viewForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    if([self isInfiniteScrollEnableInComponent:component]) {
+    if([self isInfiniteScrollEnabledInComponent:component]) {
         return [super viewForRow:[self normalizedRowForRow:row forComponent:component] forComponent:component];
     }
 
@@ -79,8 +79,8 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated
 {
-    if([self isInfiniteScrollEnableInComponent:component]) {
-        [super selectRow:row + kInfinitivePickerViewRowOffset inComponent:component animated:animated];
+    if([self isInfiniteScrollEnabledInComponent:component]) {
+        [super selectRow:row + kInfinitePickerViewRowOffset inComponent:component animated:animated];
         return;
     }
 
@@ -90,15 +90,16 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
 - (NSInteger)selectedRowInComponent:(NSInteger)component
 {
     NSInteger row = [super selectedRowInComponent:component];
-    if([self isInfiniteScrollEnableInComponent:component]) {
+    if([self isInfiniteScrollEnabledInComponent:component]) {
         return [self normalizedRowForRow:row forComponent:component];
     }
     return row;
 }
 
-- (BOOL)isInfiniteScrollEnableInComponent:(NSInteger)component {
-    if([self.delegate respondsToSelector:@selector(pickerView:isInfiniteScrollEnableInComponent:)]) {
-        return [self.delegate pickerView:self isInfiniteScrollEnableInComponent:component];
+- (BOOL)isInfiniteScrollEnabledInComponent:(NSInteger)component
+{
+    if([self.delegate respondsToSelector:@selector(pickerView:isInfiniteScrollEnabledInComponent:)]) {
+        return [self.delegate pickerView:self isInfiniteScrollEnabledInComponent:component];
     }
     return YES;
 }
@@ -111,7 +112,8 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
     self.dataSourceSurrogate = surrogate;
 }
 
-- (id<GWInfinitePickerViewDelegate>)delegate {
+- (id<GWInfinitePickerViewDelegate>)delegate
+{
     return (id<GWInfinitePickerViewDelegate>)[super delegate];
 }
 

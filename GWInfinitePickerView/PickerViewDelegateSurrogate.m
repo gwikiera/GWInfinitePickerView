@@ -20,7 +20,7 @@
     [anInvocation getArgument:&row atIndex:3];
     NSInteger component;
     [anInvocation getArgument:&component atIndex:4];
-    if(![pickerView isInfiniteScrollEnableInComponent:component]) {
+    if(![pickerView isInfiniteScrollEnabledInComponent:component]) {
         return;
     }
     NSInteger normalizedRow = [pickerView normalizedRowForRow:row forComponent:component];

@@ -112,7 +112,8 @@
     [self updateTimeLabelText];
 }
 
-- (BOOL)pickerView:(GWInfinitePickerView *)pickerView isInfiniteScrollEnableInComponent:(NSInteger)component {
+- (BOOL)pickerView:(GWInfinitePickerView *)pickerView isInfiniteScrollEnableInComponent:(NSInteger)component
+{
     return YES;
 }
 
