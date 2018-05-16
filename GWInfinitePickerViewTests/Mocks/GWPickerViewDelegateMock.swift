@@ -39,7 +39,7 @@ extension GWPickerViewDelegateMock: GWInfinitePickerViewDelegate {
         return viewForRow(row, component)
     }
 
-    func pickerView(_ pickerView: GWInfinitePickerView!, isInfiniteScrollEnableInComponent component: Int) -> Bool {
+    func pickerView(_ pickerView: GWInfinitePickerView!, isInfiniteScrollEnabledInComponent component: Int) -> Bool {
         return isInfiniteScrollEnableInComponent(component)
     }
 }
