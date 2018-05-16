@@ -35,7 +35,7 @@ class GWInfinitePickerViewTests: XCTestCase {
         return dataSourceMock
     }()
     
-    lazy var delegateMock: UIPickerViewDelegateMock! = UIPickerViewDelegateMock()
+    lazy var delegateMock: GWPickerViewDelegateMock! = GWPickerViewDelegateMock()
     
     override func setUp() {
         super.setUp()
@@ -97,6 +97,15 @@ extension GWInfinitePickerViewTests {
         
         XCTAssertEqual(tested.view(forRow: 1, forComponent: 0)?.tag, 1)
         XCTAssertEqual(tested.view(forRow: 1, forComponent: 1)?.tag, 101)
+    }
+
+    func testDelegateIsInfiniteScrollEnableInComponent() {
+        delegateMock.isInfiniteScrollEnableInComponent = { (component) in
+            return component == 0
+        }
+
+        XCTAssertEqual(tested.isInfiniteScrollEnable(inComponent: 0), true)
+        XCTAssertEqual(tested.isInfiniteScrollEnable(inComponent: 11), false)
     }
 }
 

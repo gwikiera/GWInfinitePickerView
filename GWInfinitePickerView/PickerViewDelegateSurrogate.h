@@ -22,9 +22,10 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "GWInfinitePickerViewDelegate.h"
 
-@interface PickerViewDelegateSurrogate : NSObject <UIPickerViewDelegate>
+@interface PickerViewDelegateSurrogate : NSObject <GWInfinitePickerViewDelegate>
 
-@property (weak, nonatomic) id<UIPickerViewDelegate> pickerViewDelegate;
+@property (weak, nonatomic) id<GWInfinitePickerViewDelegate> pickerViewDelegate;
 
 @end

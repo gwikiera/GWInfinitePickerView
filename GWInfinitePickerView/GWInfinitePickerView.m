@@ -61,23 +61,46 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
 
 - (NSInteger)numberOfRowsInComponent:(NSInteger)component
 {
-    return [super numberOfRowsInComponent:component] - 2 * kInfinitivePickerViewRowOffset;
+    if([self isInfiniteScrollEnableInComponent:component]) {
+        return [super numberOfRowsInComponent:component] - 2 * kInfinitivePickerViewRowOffset;
+    }
+
+    return [super numberOfRowsInComponent:component];
 }
 
 - (UIView *)viewForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [super viewForRow:[self normalizedRowForRow:row forComponent:component] forComponent:component];
+    if([self isInfiniteScrollEnableInComponent:component]) {
+        return [super viewForRow:[self normalizedRowForRow:row forComponent:component] forComponent:component];
+    }
+
+    return [super viewForRow:row forComponent:component];
 }
 
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated
 {
-    [super selectRow:row + kInfinitivePickerViewRowOffset inComponent:component animated:animated];
+    if([self isInfiniteScrollEnableInComponent:component]) {
+        [super selectRow:row + kInfinitivePickerViewRowOffset inComponent:component animated:animated];
+        return;
+    }
+
+    [super selectRow:row inComponent:component animated:animated];
 }
 
 - (NSInteger)selectedRowInComponent:(NSInteger)component
 {
     NSInteger row = [super selectedRowInComponent:component];
-    return [self normalizedRowForRow:row forComponent:component];
+    if([self isInfiniteScrollEnableInComponent:component]) {
+        return [self normalizedRowForRow:row forComponent:component];
+    }
+    return row;
+}
+
+- (BOOL)isInfiniteScrollEnableInComponent:(NSInteger)component {
+    if([self.delegate respondsToSelector:@selector(pickerView:isInfiniteScrollEnableInComponent:)]) {
+        return [self.delegate pickerView:self isInfiniteScrollEnableInComponent:component];
+    }
+    return YES;
 }
 
 - (void)setDataSource:(id<UIPickerViewDataSource>)dataSource
@@ -88,7 +111,11 @@ NSInteger const kInfinitivePickerViewRowOffset = 1000;
     self.dataSourceSurrogate = surrogate;
 }
 
-- (void)setDelegate:(id<UIPickerViewDelegate>)delegate
+- (id<GWInfinitePickerViewDelegate>)delegate {
+    return (id<GWInfinitePickerViewDelegate>)[super delegate];
+}
+
+- (void)setDelegate:(id<GWInfinitePickerViewDelegate>)delegate
 {
     PickerViewDelegateSurrogate * surrogate = [[PickerViewDelegateSurrogate alloc] init];
     surrogate.pickerViewDelegate = delegate;

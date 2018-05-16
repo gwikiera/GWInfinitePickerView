@@ -36,8 +36,14 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    NSInteger numberOfRowsInComponent = [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
-    return kInfinitivePickerViewRowOffset * 2 + numberOfRowsInComponent;
+    if ([pickerView isKindOfClass:[GWInfinitePickerView class]]) {
+        GWInfinitePickerView *infinitePickerView = (GWInfinitePickerView *)pickerView;
+        if([infinitePickerView isInfiniteScrollEnableInComponent:component]) {
+            NSInteger numberOfRowsInComponent = [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
+            return kInfinitivePickerViewRowOffset * 2 + numberOfRowsInComponent;
+        }
+    }
+    return [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
 }
 
 @end
