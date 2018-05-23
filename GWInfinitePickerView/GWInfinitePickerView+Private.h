@@ -21,9 +21,11 @@
  * THE SOFTWARE.
  */
 
-extern NSInteger const kInfinitivePickerViewRowOffset;
+#import "GWInfinitePickerView.h"
 
-@interface GWInfinitePickerView : UIPickerView
+extern NSInteger const kInfinitePickerViewRowOffset;
+
+@interface GWInfinitePickerView()
 
 - (NSInteger)normalizedRowForRow:(NSInteger)row forComponent:(NSInteger)component;
 

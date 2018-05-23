@@ -22,19 +22,24 @@
  */
 
 import UIKit
+import GWInfinitePickerView
 
-class UIPickerViewDelegateMock: NSObject {
+class GWPickerViewDelegateMock: NSObject {
     var widthForComponent: (Int) -> CGFloat = { _ in return 0 }
     var viewForRow: (Int, Int) -> UIView = { _ in return UIView() }
-
+    var isInfiniteScrollEnableInComponent: (Int) -> Bool = { _ in return true }
 }
 
-extension UIPickerViewDelegateMock: UIPickerViewDelegate {
+extension GWPickerViewDelegateMock: GWInfinitePickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         return widthForComponent(component)
     }
     
     func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         return viewForRow(row, component)
+    }
+
+    func pickerView(_ pickerView: GWInfinitePickerView!, isInfiniteScrollEnabledInComponent component: Int) -> Bool {
+        return isInfiniteScrollEnableInComponent(component)
     }
 }

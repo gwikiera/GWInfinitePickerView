@@ -22,8 +22,9 @@
  */
 
 #import "DemoViewController.h"
+@import GWInfinitePickerView;
 
-@interface DemoViewController ()
+@interface DemoViewController () <GWInfinitePickerViewDelegate, UIPickerViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
@@ -85,7 +86,7 @@
     self.timeLabel.text = [NSString stringWithFormat:@"%02ld:%02ld", (long)hour, (long)minute];
 }
 
-#pragma mark - UIPickerViewDelegate
+#pragma mark - GWInfinitePickerViewDelegate
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view
 {
@@ -109,6 +110,11 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     [self updateTimeLabelText];
+}
+
+- (BOOL)pickerView:(GWInfinitePickerView *)pickerView isInfiniteScrollEnableInComponent:(NSInteger)component
+{
+    return YES;
 }
 
 #pragma mark - UIPickerViewDataSource

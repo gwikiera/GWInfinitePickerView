@@ -22,6 +22,7 @@
  */
 
 #import <UIKit/UIKit.h>
+#import "GWInfinitePickerViewDelegate.h"
 
 //! Project version number for GWInfinitePickerView.
 FOUNDATION_EXPORT double GWInfinitePickerViewVersionNumber;
@@ -29,6 +30,22 @@ FOUNDATION_EXPORT double GWInfinitePickerViewVersionNumber;
 //! Project version string for GWInfinitePickerView.
 FOUNDATION_EXPORT const unsigned char GWInfinitePickerViewVersionString[];
 
+/**
+ `UIPickerView` subclass which enables endless scrolling (like UIDatePicker).
+*/
 @interface GWInfinitePickerView : UIPickerView
+
+/**
+ The delegate for the picker view.
+ */
+@property(nullable,nonatomic,weak) id<GWInfinitePickerViewDelegate> delegate;
+
+/**
+ Returns the information if infinite scrolling is enable for a component.
+
+ @param component A zero-indexed number identifying a component of the picker view.
+ @return true if infinite scroll is enable, otherwise false.
+ */
+- (BOOL)isInfiniteScrollEnabledInComponent:(NSInteger)component;
 
 @end
