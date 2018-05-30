@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2D3FB6F42023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3FB6F32023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift */; };
-		2D3FB6F62023B56C0092D9E7 /* UIPickerViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3FB6F52023B56C0092D9E7 /* UIPickerViewDelegateMock.swift */; };
+		2D3FB6F62023B56C0092D9E7 /* GWPickerViewDelegateMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D3FB6F52023B56C0092D9E7 /* GWPickerViewDelegateMock.swift */; };
 		2D93AEA020225E2300E7A41E /* GWInfinitePickerView.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D93AE9620225E2300E7A41E /* GWInfinitePickerView.framework */; };
 		2D93AEBA20225FA000E7A41E /* GWInfinitePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEB820225FA000E7A41E /* GWInfinitePickerView.m */; };
 		2D93AEBB20225FA000E7A41E /* GWInfinitePickerView.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D93AEB920225FA000E7A41E /* GWInfinitePickerView.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,6 +17,7 @@
 		2D93AEF02022672500E7A41E /* PickerViewDelegateSurrogate.h in Headers */ = {isa = PBXBuildFile; fileRef = 2D93AEEE2022672500E7A41E /* PickerViewDelegateSurrogate.h */; };
 		2D93AEF12022672500E7A41E /* PickerViewDelegateSurrogate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEEF2022672500E7A41E /* PickerViewDelegateSurrogate.m */; };
 		2D93AEF52022699600E7A41E /* GWInfinitePickerViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D93AEF42022699600E7A41E /* GWInfinitePickerViewTests.swift */; };
+		EB21894220AC2F9500C6306A /* GWInfinitePickerViewDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = EB21894020AC2F9500C6306A /* GWInfinitePickerViewDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,7 +32,7 @@
 
 /* Begin PBXFileReference section */
 		2D3FB6F32023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewDataSourceMock.swift; sourceTree = "<group>"; };
-		2D3FB6F52023B56C0092D9E7 /* UIPickerViewDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIPickerViewDelegateMock.swift; sourceTree = "<group>"; };
+		2D3FB6F52023B56C0092D9E7 /* GWPickerViewDelegateMock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GWPickerViewDelegateMock.swift; sourceTree = "<group>"; };
 		2D93AE9620225E2300E7A41E /* GWInfinitePickerView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = GWInfinitePickerView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D93AE9A20225E2300E7A41E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D93AE9F20225E2300E7A41E /* GWInfinitePickerViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GWInfinitePickerViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +46,7 @@
 		2D93AEF2202267A600E7A41E /* GWInfinitePickerView+Private.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GWInfinitePickerView+Private.h"; sourceTree = "<group>"; };
 		2D93AEF32022699500E7A41E /* GWInfinitePickerViewTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "GWInfinitePickerViewTests-Bridging-Header.h"; sourceTree = "<group>"; };
 		2D93AEF42022699600E7A41E /* GWInfinitePickerViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GWInfinitePickerViewTests.swift; sourceTree = "<group>"; };
+		EB21894020AC2F9500C6306A /* GWInfinitePickerViewDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GWInfinitePickerViewDelegate.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				2D3FB6F32023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift */,
-				2D3FB6F52023B56C0092D9E7 /* UIPickerViewDelegateMock.swift */,
+				2D3FB6F52023B56C0092D9E7 /* GWPickerViewDelegateMock.swift */,
 			);
 			path = Mocks;
 			sourceTree = "<group>";
@@ -103,6 +105,7 @@
 				2D93AEEB2022656900E7A41E /* PickerViewDataSourceSurrogate.m */,
 				2D93AEEE2022672500E7A41E /* PickerViewDelegateSurrogate.h */,
 				2D93AEEF2022672500E7A41E /* PickerViewDelegateSurrogate.m */,
+				EB21894020AC2F9500C6306A /* GWInfinitePickerViewDelegate.h */,
 				2D93AE9A20225E2300E7A41E /* Info.plist */,
 			);
 			path = GWInfinitePickerView;
@@ -126,6 +129,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EB21894220AC2F9500C6306A /* GWInfinitePickerViewDelegate.h in Headers */,
 				2D93AEBB20225FA000E7A41E /* GWInfinitePickerView.h in Headers */,
 				2D93AEEC2022656900E7A41E /* PickerViewDataSourceSurrogate.h in Headers */,
 				2D93AEF02022672500E7A41E /* PickerViewDelegateSurrogate.h in Headers */,
@@ -177,7 +181,7 @@
 		2D93AE8D20225E2200E7A41E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "Grzegorz Wikiera";
 				TargetAttributes = {
 					2D93AE9520225E2300E7A41E = {
@@ -242,7 +246,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2D3FB6F42023B49D0092D9E7 /* UIPickerViewDataSourceMock.swift in Sources */,
-				2D3FB6F62023B56C0092D9E7 /* UIPickerViewDelegateMock.swift in Sources */,
+				2D3FB6F62023B56C0092D9E7 /* GWPickerViewDelegateMock.swift in Sources */,
 				2D93AEF52022699600E7A41E /* GWInfinitePickerViewTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -272,6 +276,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -279,6 +284,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -330,6 +336,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -337,6 +344,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -362,6 +370,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";

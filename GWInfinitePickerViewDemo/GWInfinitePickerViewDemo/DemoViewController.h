@@ -23,6 +23,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DemoViewController : UIViewController <UIPickerViewDataSource, UIPickerViewDelegate>
+@interface DemoViewController : UIViewController
 
 @end
