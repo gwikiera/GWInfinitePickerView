@@ -25,8 +25,6 @@
 #import "PickerViewDataSourceSurrogate.h"
 #import "PickerViewDelegateSurrogate.h"
 
-NSInteger const kInfinitePickerViewRowOffset = 1000;
-
 @interface GWInfinitePickerView()
 
 @property (strong, nonatomic) PickerViewDataSourceSurrogate * dataSourceSurrogate;
@@ -52,7 +50,8 @@ NSInteger const kInfinitePickerViewRowOffset = 1000;
         return row;
     }
     
-    NSInteger normalizedRow = (row - kInfinitePickerViewRowOffset) % numberOfRowsInComponent;
+    NSInteger rowOffset = [self.dataSourceSurrogate pickerView:self rowOffsetForComponent:component];
+    NSInteger normalizedRow = (row - rowOffset) % numberOfRowsInComponent;
     if (normalizedRow < 0) {
         normalizedRow += numberOfRowsInComponent;
     }
@@ -62,7 +61,8 @@ NSInteger const kInfinitePickerViewRowOffset = 1000;
 - (NSInteger)numberOfRowsInComponent:(NSInteger)component
 {
     if([self isInfiniteScrollEnabledInComponent:component]) {
-        return [super numberOfRowsInComponent:component] - 2 * kInfinitePickerViewRowOffset;
+        NSInteger rowOffset = [self.dataSourceSurrogate pickerView:self rowOffsetForComponent:component];
+        return [super numberOfRowsInComponent:component] - 2 * rowOffset;
     }
 
     return [super numberOfRowsInComponent:component];
@@ -80,7 +80,8 @@ NSInteger const kInfinitePickerViewRowOffset = 1000;
 - (void)selectRow:(NSInteger)row inComponent:(NSInteger)component animated:(BOOL)animated
 {
     if([self isInfiniteScrollEnabledInComponent:component]) {
-        [super selectRow:row + kInfinitePickerViewRowOffset inComponent:component animated:animated];
+        NSInteger rowOffset = [self.dataSourceSurrogate pickerView:self rowOffsetForComponent:component];
+        [super selectRow:row + rowOffset inComponent:component animated:animated];
         return;
     }
 

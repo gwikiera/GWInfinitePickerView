@@ -25,7 +25,17 @@
 #import "PickerViewDataSourceSurrogate.h"
 #import "GWInfinitePickerView+Private.h"
 
+NSInteger const kInfinitePickerViewRowOffset = 1000;
+
 @implementation PickerViewDataSourceSurrogate
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView rowOffsetForComponent:(NSInteger)component {
+    NSInteger numberOfRowsInComponent = [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
+    if (numberOfRowsInComponent <= 0) {
+        return kInfinitePickerViewRowOffset;
+    }
+    return ((kInfinitePickerViewRowOffset / numberOfRowsInComponent) + 1) * numberOfRowsInComponent;
+}
 
 #pragma mark - UIPickerViewDataSource
 
@@ -40,7 +50,7 @@
         GWInfinitePickerView *infinitePickerView = (GWInfinitePickerView *)pickerView;
         if([infinitePickerView isInfiniteScrollEnabledInComponent:component]) {
             NSInteger numberOfRowsInComponent = [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
-            return kInfinitePickerViewRowOffset * 2 + numberOfRowsInComponent;
+            return [self pickerView:pickerView rowOffsetForComponent:component] * 2 + numberOfRowsInComponent;
         }
     }
     return [self.pickerViewDataSource pickerView:pickerView numberOfRowsInComponent:component];
